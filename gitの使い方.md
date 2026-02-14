@@ -24,7 +24,7 @@ git remote add origin https://github.com/takumi-git/test-page.git
 ```Bash
 git remote -v
 ```
-2. リモート情報の同期（Git Bash）
+## 2. リモート情報の同期（Git Bash）
 リモートにあるブランチ情報（main 以外のブランチなど）をパソコンに取り込む。
 
 ```Bash
@@ -32,16 +32,16 @@ git fetch
 ```
 ※ これを行わないと、VSCode側でリモートのブランチが表示されない場合がある。<br>
 
-3. ブランチの切り替え（VSCode）
+## 3. ブランチの切り替え（VSCode）
 Git Bashでの操作が反映されているため、マウス操作だけで切り替えが可能。
-方法A：ステータスバーから（推奨）
-VSCodeの画面左下隅にあるブランチ名（master や main）をクリック。
-画面上部にブランチリストが表示される。
-切り替えたいブランチ名を選択する。
-方法B：コマンドパレットから
-Ctrl + Shift + P を押す。
-「Git checkout」と入力して選択。
-リストからブランチを選ぶ。
+#### 方法A：ステータスバーから（推奨）
+1. VSCodeの画面左下隅にあるブランチ名（master や main）をクリック。
+2. 画面上部にブランチリストが表示される。
+3. 切り替えたいブランチ名を選択する。
+#### 方法B：コマンドパレットから
+1. Ctrl + Shift + P を押す。
+2. 「Git checkout」と入力して選択。
+3. リストからブランチを選ぶ。
 #### よく使うトラブルシューティング
 ##### Q. fatal: not a git repository と出た
 ##### A. git init を忘れている。
