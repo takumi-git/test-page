@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>毎月“決算→分配→自動再投資”サイクル設計（SCHD/VYM/SBI×日本）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{--c1:#0d47a1;--c2:#1976d2;--c3:#388e3c;--c4:#6d4c41;--bg:#f7fbff}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif; line-height:1.6; margin:0; background:var(--bg); color:#222}
+    header{background:linear-gradient(90deg,var(--c1),var(--c2)); color:#fff; padding:20px}
+    h1{margin:0;font-size:1.25rem}
+    main{padding:20px; max-width:980px; margin:auto}
+    section{background:#fff; border:1px solid #e5edf7; border-radius:10px; padding:16px; margin-bottom:16px}
+    h2{margin:0 0 10px}
+    .fund{display:grid; grid-template-columns:140px 1fr; gap:8px; padding:10px; border:1px solid #eef3fa; border-radius:8px; background:#fbfdff}
+    .fund + .fund{margin-top:10px}
+    .fund .label{font-weight:700; color:#333}
+    .pill{display:inline-block; padding:2px 8px; border-radius:999px; font-size:.85rem; background:#e3f2fd; color:#0d47a1; margin-right:6px}
+    .note{font-size:.9rem; color:#555}
+    table{width:100%; border-collapse:collapse; background:#fff}
+    th,td{border:1px solid #e6eef9; padding:8px; text-align:center}
+    thead th{background:#f1f6fe; font-weight:700}
+    .m1,.m4,.m7,.m10{background:#fffde7}
+    .m2,.m5,.m8,.m11{background:#e8f5e9}
+    .m3,.m6,.m9,.m12{background:#f3e5f5}
+    footer{font-size:.85rem; color:#666; margin-top:10px}
+    a{color:#1565c0; text-decoration:none}
+    a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+<header>
+  <h1>毎月“決算→分配→自動再投資”サイクル設計（追加3本の候補）</h1>
+</header>
+<main>
+
+  <section>
+    <h2>✅ 結論（追加する3本の候補）</h2>
+
+    <div class="fund">
+      <div class="label">すでに保有</div>
+      <div>
+        <span class="pill">米国・SCHD系</span>
+        楽天・シュワブ・高配当株式・米国ファンド（四半期決算型／愛称：楽天・SCHD）<br/>
+        <span class="note">決算月：2・5・8・11月（25日）。運用状況により無配の可能性あり。</span>
+      </div>
+    </div>
+
+    <div class="fund">
+      <div class="label">① 補完：VYM系</div>
+      <div>
+        <span class="pill">米国・VYM</span>
+        楽天・高配当株式・米国VYMファンド（四半期決算型）<br/>
+        <span class="note">決算月：1・4・7・10月（15日）。分配金は「受取」または「再投資」から選択可。</span>
+      </div>
+    </div>
+
+    <div class="fund">
+      <div class="label">② 補完：SCHD系（別運用）</div>
+      <div>
+        <span class="pill">米国・SCHD系</span>
+        SBI・S・米国高配当株式ファンド（年4回決算型）〔愛称：S・米国高配当株式100〕<br/>
+        <span class="note">投資対象：SCHD系。決算月：3・6・9・12月（現在は各月28日に変更）。</span>
+      </div>
+    </div>
+
+    <div class="fund">
+      <div class="label">③ 通貨分散</div>
+      <div>
+        <span class="pill">日本株・高配当</span>
+        楽天・高配当株式・日本（四半期決算型）<br/>
+        <span class="note">決算月：3・6・9・12月（25日）。②と月は重複（円建て分散が目的）。</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 月次サイクル（決算が来る月）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>月</th><th>該当ファンド</th><th>補足</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="m1"><td>1月</td><td>① 楽天VYM</td><td>15日</td></tr>
+        <tr class="m2"><td>2月</td><td>既存 楽天・SCHD</td><td>25日</td></tr>
+        <tr class="m3"><td>3月</td><td>② SBI・S（＋③ 日本）</td><td>②は28日／③は25日</td></tr>
+        <tr class="m4"><td>4月</td><td>① 楽天VYM</td><td>15日</td></tr>
+        <tr class="m5"><td>5月</td><td>既存 楽天・SCHD</td><td>25日</td></tr>
+        <tr class="m6"><td>6月</td><td>② SBI・S（＋③ 日本）</td><td>②は28日／③は25日</td></tr>
+        <tr class="m7"><td>7月</td><td>① 楽天VYM</td><td>15日</td></tr>
+        <tr class="m8"><td>8月</td><td>既存 楽天・SCHD</td><td>25日</td></tr>
+        <tr class="m9"><td>9月</td><td>② SBI・S（＋③ 日本）</td><td>②は28日／③は25日</td></tr>
+        <tr class="m10"><td>10月</td><td>① 楽天VYM</td><td>15日</td></tr>
+        <tr class="m11"><td>11月</td><td>既存 楽天・SCHD</td><td>25日</td></tr>
+        <tr class="m12"><td>12月</td><td>② SBI・S（＋③ 日本）</td><td>②は28日／③は25日</td></tr>
+      </tbody>
+    </table>
+    <footer>※表示の決算日は目論見書や運用会社の公表値に基づく標準スケジュールです。実際の分配有無・金額は運用状況により変動し、無配となる場合があります。</footer>
+  </section>
+
+  <section>
+    <h2>🔗 参考リンク（公式）</h2>
+    <ul>
+      <li>楽天・SCHD（四半期決算型）：<a href="https://www.rakuten-toushin.co.jp/fund/nav/risude/">楽天投信投資顧問</a> / <a href="https://www.rakuten-sec.co.jp/web/fund/detail/?ID=JP90C000R6N1">楽天証券</a></li>
+      <li>楽天・VYM（四半期決算型）：<a href="https://www.rakuten-toushin.co.jp/fund/nav/risudev/">楽天投信投資顧問</a> / <a href="https://www.rakuten-sec.co.jp/web/fund/detail/?ID=JP90C000RKZ4">楽天証券</a></li>
+      <li>SBI・S（年4回決算型）：<a href="https://www.sbiglobalam.co.jp/release/pdf/prs250813_01.pdf">決算日28日への変更リリース</a></li>
+      <li>楽天・高配当株式・日本（四半期決算型）：<a href="https://www.rakuten-toushin.co.jp/fund/nav/risjde/">楽天投信投資顧問</a> / <a href="https://www.rakuten-sec.co.jp/web/fund/detail/?ID=JP90C000RGT5">楽天証券</a></li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>
+``
