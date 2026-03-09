@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>販財給 SE向け 業務フローガイド</title>
+<style>
+body{font-family:"Segoe UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;margin:40px;background:#f1f5f9;color:#0f172a;line-height:1.7}
+h1,h2,h3{color:#020617}
+.card{background:#fff;padding:24px;margin:24px 0;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.flow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{background:#bae6fd;padding:10px 14px;border-radius:8px;font-weight:bold}
+.arrow{font-size:20px}
+.table{width:100%;border-collapse:collapse;margin-top:12px}
+.table th,.table td{border:1px solid #cbd5e1;padding:8px}
+.code{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:10px;font-family:Consolas}
+.bad{color:#b91c1c;font-weight:bold}
+.good{color:#065f46;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>販財給システム SE向け 業務フロー理解ガイド</h1>
+
+<div class="card">
+<h2>① 販売業務ライフサイクル（データ状態遷移）</h2>
+<div class="flow">
+<div class="box">受注</div>
+<div class="arrow">→</div>
+<div class="box">出荷確定</div>
+<div class="arrow">→</div>
+<div class="box">売上計上</div>
+<div class="arrow">→</div>
+<div class="box">請求締</div>
+<div class="arrow">→</div>
+<div class="box">入金消込</div>
+</div>
+
+<pre class="code">
+受注登録
+ ↓（在庫引当）
+出荷確定
+ ↓（売上原価確定）
+売上計上
+ ↓（売掛金発生）
+請求締処理
+ ↓（請求残確定）
+入金消込
+ ↓（売掛減少）
+回収完了
+</pre>
+</div>
+
+<div class="card">
+<h2>② イベント × 会計仕訳 発生タイミング</h2>
+<table class="table">
+<tr><th>イベント</th><th>売掛</th><th>売上</th><th>在庫</th><th>売上原価</th></tr>
+<tr><td>受注</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>出荷確定</td><td>-</td><td>-</td><td class="bad">減少</td><td class="good">増加</td></tr>
+<tr><td>売上計上</td><td class="good">増加</td><td class="good">増加</td><td>-</td><td>-</td></tr>
+<tr><td>入金消込</td><td class="bad">減少</td><td>-</td><td>-</td><td>-</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>③ 与信チェックロジック（実装視点）</h2>
+<pre class="code">
+与信使用額 =
+    売掛残高
+  + 受注残
+  + 出荷済未請求
+  - 入金予定額
+</pre>
+
+<pre class="code">
+If 与信使用額 > 与信限度額 Then
+    → 受注登録NG
+    → 出荷停止
+    → 承認ワークフロー
+End If
+</pre>
+</div>
+
+<div class="card">
+<h2>④ 主なトランザクションテーブル（論理）</h2>
+<table class="table">
+<tr><th>業務</th><th>代表テーブル</th><th>備考</th></tr>
+<tr><td>受注</td><td>T_Order</td><td>受注残管理</td></tr>
+<tr><td>出荷</td><td>T_Shipment</td><td>出荷済未請求</td></tr>
+<tr><td>売上</td><td>T_Sales</td><td>売掛発生</td></tr>
+<tr><td>請求</td><td>T_Billing</td><td>請求残</td></tr>
+<tr><td>入金</td><td>T_Receipt</td><td>消込対象</td></tr>
+<tr><td>売掛残</td><td>T_ARBalance</td><td>与信対象</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>⑤ バッチ処理一覧（現場頻出）</h2>
+<ul>
+<li>売上計上バッチ</li>
+<li>請求締処理</li>
+<li>入金消込処理</li>
+<li>与信チェック（オンライン/出荷時）</li>
+<li>在庫評価更新</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>⑥ よくある障害パターン</h2>
+<ul>
+<li>売上未計上 → 売掛不足</li>
+<li>請求漏れ → 回収不能</li>
+<li>消込未実施 → 滞留債権</li>
+<li>出荷済未請求残高肥大 → 与信NG</li>
+</ul>
+</div>
+
+</body>
+</html>
