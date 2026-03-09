@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>販財給 業務フロー超入門</title>
+<style>
+body{font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; margin:40px; line-height:1.7; background:#f8fafc; color:#1e293b}
+h1,h2{color:#0f172a}
+.card{background:white; padding:20px; margin:20px 0; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.flow{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+.box{padding:12px 16px; background:#e0f2fe; border-radius:8px; font-weight:bold}
+.arrow{font-size:24px}
+.table{width:100%; border-collapse:collapse}
+.table th,.table td{border:1px solid #cbd5e1; padding:8px}
+.badge{background:#fef9c3; padding:4px 8px; border-radius:6px}
+</style>
+</head>
+<body>
+<h1>販財給システム 業務フロー超入門</h1>
+
+<div class="card">
+<h2>① 販売管理（販）</h2>
+<div class="flow">
+<div class="box">受注</div>
+<div class="arrow">→</div>
+<div class="box">出荷</div>
+<div class="arrow">→</div>
+<div class="box">売上</div>
+<div class="arrow">→</div>
+<div class="box">請求</div>
+<div class="arrow">→</div>
+<div class="box">入金</div>
+</div>
+
+<h3>状態の変化</h3>
+<table class="table">
+<tr><th>状態</th><th>システム用語</th><th>意味</th></tr>
+<tr><td>受注</td><td>受注残</td><td>注文はあるが未出荷</td></tr>
+<tr><td>出荷</td><td>出荷済未請求</td><td>納品済だが請求前</td></tr>
+<tr><td>売上</td><td>売掛金</td><td>未回収のお金</td></tr>
+<tr><td>請求</td><td>請求残</td><td>入金待ち</td></tr>
+<tr><td>入金</td><td>消込済</td><td>回収完了</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>② 購買管理（給）</h2>
+<div class="flow">
+<div class="box">発注</div>
+<div class="arrow">→</div>
+<div class="box">入荷</div>
+<div class="arrow">→</div>
+<div class="box">仕入</div>
+<div class="arrow">→</div>
+<div class="box">支払</div>
+</div>
+
+<h3>状態の変化</h3>
+<table class="table">
+<tr><th>状態</th><th>システム用語</th><th>意味</th></tr>
+<tr><td>発注</td><td>発注残</td><td>未入荷</td></tr>
+<tr><td>入荷</td><td>入荷済未請求</td><td>請求前</td></tr>
+<tr><td>仕入</td><td>買掛金</td><td>未払い</td></tr>
+<tr><td>支払</td><td>消込済</td><td>支払完了</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>③ 在庫の動き</h2>
+<div class="flow">
+<div class="box">仕入（入荷）</div>
+<div class="arrow">→ 在庫増</div>
+<div class="box">販売（出荷）</div>
+<div class="arrow">→ 在庫減</div>
+</div>
+</div>
+
+<div class="card">
+<h2>④ 与信チェックの考え方</h2>
+<p>システムは以下を合計してチェックしています：</p>
+<ul>
+<li>売掛残高</li>
+<li>受注残</li>
+<li>出荷済未請求</li>
+</ul>
+<p class="badge">これが与信限度額を超えると取引停止</p>
+</div>
+
+<div class="card">
+<h2>⑤ 会計との関係</h2>
+<p>販売・購買のイベントは全て仕訳の元になります。</p>
+<ul>
+<li>売上 → 売掛金増加</li>
+<li>入金 → 売掛金減少</li>
+<li>仕入 → 買掛金増加</li>
+<li>支払 → 買掛金減少</li>
+</ul>
+</div>
+
+</body>
+</html>
