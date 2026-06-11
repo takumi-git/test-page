@@ -25,6 +25,11 @@
                 <li>現場猫風</li>
                 <li>よく分からないけど動いてるからよし！</li>
                 
+                taskkill /f /im msedgewebview2.exe 2>$null
+
+                rmdir /s /q "$env:LOCALAPPDATA\Microsoft\EdgeWebView"
+                rmdir /s /q "$env:LOCALAPPDATA\Microsoft\EdgeUpdate"
+
                 
                 <img src="https://pbs.twimg.com/media/Dkt3fnqUcAAVaUN.jpg" alt="現場猫" width="640" height="480">
             </body>
